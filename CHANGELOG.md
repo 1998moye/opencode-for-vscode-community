@@ -1,5 +1,13 @@
 # 更新记录
 
+## 0.0.143
+
+- README 截图改为 jsDelivr HTTPS；去掉 data URI 内嵌（扩展详情 webview 不兼容）。强调须安装 `Dingzhen.opencode-for-vscode-community`，勿与 `dz` 旧包混用。
+
+## 0.0.142
+
+- 修复 0.0.141 VSIX 损坏无法安装：README 内嵌截图改用 `adm-zip` 原地更新 ZIP，不再用 `tar` 重打包。
+
 ## 0.0.141
 
 - 扩展详情 README 截图改为打包时内嵌 **data URI**（符合 VS Code `img-src https:` / data 策略，不依赖 GitHub 外链）。

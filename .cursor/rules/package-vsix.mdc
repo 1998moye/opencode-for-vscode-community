@@ -9,4 +9,4 @@ alwaysApply: true
 1. 使用 `npm run package` 或 `npm run vsix`（二者等价）。
 2. 禁止跳过 `scripts/bump-version.mjs` 直接运行 `vsce package`。
 3. 功能性改动后，在 `CHANGELOG.md` 顶部补充新版本说明。
-4. README 截图：打包后用 `scripts/embed-readme-in-vsix.mjs` 写入 **data URI**（VS Code 扩展详情 CSP 仅 `img-src https:`，相对路径与部分 GitHub 域名会裂图；见 [vscode#43173](https://github.com/microsoft/vscode/issues/43173)、[vscode-vsce#390](https://github.com/microsoft/vscode-vsce/issues/390)）。`npm run package` 已自动执行。
+4. README 功能截图在源码里写 **jsDelivr HTTPS**（`cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/...`）。扩展详情只认 https，不用相对路径、不用 data URI 内嵌。
