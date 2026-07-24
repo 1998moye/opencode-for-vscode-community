@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true">
+  <!-- Er VS Code ;˜ -->
+  <path
+    fill="#0284c7"
+    fill-rule="evenodd"
+    d="M2.5 2.75A1.75 1.75 0 0 1 4.25 1h7.5A1.75 1.75 0 0 1 13.5 2.75v5.25c0 .97-.78 1.75-1.75 1.75H7.1L4.25 12.25V9.75H4.25A1.75 1.75 0 0 1 2.5 8V2.75Zm2.1 2.35h6.8v1.05H4.6V5.1Zm0 2.15h4.6v1.05H4.6V7.25Z"
+  />
+</svg>

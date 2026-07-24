@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" role="img" aria-label="OpenCode">
+  <!-- 基于 OpenCode 官方方形标识的单色变体，见 https://opencode.ai/brand -->
+  <path
+    fill="currentColor"
+    fill-rule="evenodd"
+    d="M180 60H60V240H180V60ZM240 300H0V0H240V300ZM180 240H60V120H180V240Z"
+  />
+</svg>

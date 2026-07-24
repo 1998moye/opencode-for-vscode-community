@@ -1,0 +1,11 @@
+---
+description: VSIX 打包必须递增版本号
+globs:
+alwaysApply: true
+---
+
+打 VSIX 时：
+
+1. 使用 `npm run package` 或 `npm run vsix`（二者等价）。
+2. 禁止跳过 `scripts/bump-version.mjs` 直接运行 `vsce package`。
+3. 功能性改动后，在 `CHANGELOG.md` 顶部补充新版本说明。

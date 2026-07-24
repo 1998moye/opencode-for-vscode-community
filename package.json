@@ -1,0 +1,255 @@
+{
+  "name": "opencode-for-vscode-community",
+  "displayName": "OpenCode for VS Code — 社区版",
+  "description": "基于 OpenCode CLI 和 Server API 的原生 VS Code 图形客户端。",
+  "version": "0.0.139",
+  "publisher": "Dingzhen",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "private": false,
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "opencode",
+    "agent",
+    "chat"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:opencodeCommunity.chatView",
+    "onCommand:opencodeCommunity.openSidebar",
+    "onCommand:opencodeCommunity.openChatEditor"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "secondarySidebar": [
+        {
+          "id": "opencodeCommunityChatContainer",
+          "title": "OpenCode 社区版",
+          "icon": "media/activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "opencodeCommunityChatContainer": [
+        {
+          "type": "webview",
+          "id": "opencodeCommunity.chatView",
+          "name": "OpenCode 社区版聊天"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "opencodeCommunity.openSidebar",
+        "title": "OpenCode 社区版：打开右侧聊天",
+        "icon": {
+          "light": "media/chat-light.svg",
+          "dark": "media/chat-dark.svg"
+        }
+      },
+      {
+        "command": "opencodeCommunity.openChatEditor",
+        "title": "OpenCode 社区版：在编辑器中打开聊天",
+        "icon": {
+          "light": "media/opencode-mark-light.svg",
+          "dark": "media/opencode-mark-dark.svg"
+        }
+      },
+      {
+        "command": "opencodeCommunity.retryConnection",
+        "title": "OpenCode 社区版：重新检测并连接"
+      },
+      {
+        "command": "opencodeCommunity.newSession",
+        "title": "OpenCode 社区版：新建会话",
+        "icon": "$(add)"
+      },
+      {
+        "command": "opencodeCommunity.setServerPassword",
+        "title": "OpenCode 社区版：设置外部服务密码"
+      },
+      {
+        "command": "opencodeCommunity.openOpencodeConfig",
+        "title": "OpenCode 社区版：编辑 opencode.json"
+      },
+      {
+        "command": "opencodeCommunity.connectProvider",
+        "title": "OpenCode 社区版：连接模型供应商"
+      },
+      {
+        "command": "opencodeCommunity.addSelectionToChat",
+        "title": "OpenCode 社区版：将选区加入聊天"
+      },
+      {
+        "command": "opencodeCommunity.askInNewSession",
+        "title": "OpenCode 社区版：在新会话中提问"
+      },
+      {
+        "command": "opencodeCommunity.fixDiagnostics",
+        "title": "OpenCode 社区版：修复当前诊断"
+      },
+      {
+        "command": "opencodeCommunity.reviewSelection",
+        "title": "OpenCode 社区版：审查选区"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "opencodeCommunity.addSelectionToChat",
+          "when": "editorHasSelection",
+          "group": "navigation@100"
+        },
+        {
+          "command": "opencodeCommunity.askInNewSession",
+          "when": "editorHasSelection",
+          "group": "navigation@101"
+        },
+        {
+          "command": "opencodeCommunity.fixDiagnostics",
+          "group": "navigation@102"
+        },
+        {
+          "command": "opencodeCommunity.reviewSelection",
+          "when": "editorHasSelection",
+          "group": "navigation@103"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "opencodeCommunity.openSidebar",
+          "group": "navigation@90"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "opencodeCommunity.newSession",
+          "when": "view == opencodeCommunity.chatView",
+          "group": "navigation@10"
+        },
+        {
+          "command": "opencodeCommunity.openChatEditor",
+          "when": "view == opencodeCommunity.chatView",
+          "group": "navigation@20"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OpenCode for VS Code — 社区版",
+      "properties": {
+        "opencodeCommunity.executablePath": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "description": "OpenCode CLI 可执行文件路径。留空时从系统 PATH 检测。",
+          "restricted": true
+        },
+        "opencodeCommunity.connection.topology": {
+          "type": "string",
+          "enum": [
+            "managed-local",
+            "external-same-filesystem",
+            "external-remote"
+          ],
+          "enumDescriptions": [
+            "由插件在 Extension Host 本机回环地址启动和管理服务，具备完整本地能力。",
+            "连接用户自行管理、并与 Extension Host 共用文件系统的服务；必须通过路径验证。",
+            "连接不同文件系统上的远程服务；聊天与历史可用，文件能力需要已验证路径映射。"
+          ],
+          "default": "managed-local",
+          "scope": "window",
+          "description": "OpenCode Server 所有权与文件系统拓扑。",
+          "restricted": true
+        },
+        "opencodeCommunity.connection.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:4096",
+          "scope": "window",
+          "description": "外部 OpenCode Server 地址。非回环地址必须使用 HTTPS。",
+          "restricted": true
+        },
+        "opencodeCommunity.connection.pathMappings": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "object",
+            "required": [
+              "localRoot",
+              "serverRoot"
+            ],
+            "properties": {
+              "localRoot": {
+                "type": "string",
+                "description": "Extension Host 可访问的本地根目录。"
+              },
+              "serverRoot": {
+                "type": "string",
+                "description": "同一内容在 OpenCode Server 上的根目录。"
+              }
+            }
+          },
+          "scope": "window",
+          "description": "远程拓扑的路径映射。只有通过服务端路径探测后才会逐项开放文件能力。",
+          "restricted": true
+        },
+        "opencodeCommunity.language": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "zh-cn",
+            "en"
+          ],
+          "default": "auto",
+          "scope": "window",
+          "description": "插件界面语言。"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1998moye/opencode-for-vscode-community.git"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run clean && npm run build:extension && npm run build:webview",
+    "build:extension": "node scripts/build-extension.mjs",
+    "build:webview": "vite build",
+    "watch:extension": "node scripts/build-extension.mjs --watch",
+    "watch:webview": "vite build --watch",
+    "typecheck": "tsc --noEmit && tsc -p webview/tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "package": "node scripts/bump-version.mjs && npm run build && vsce package --no-dependencies",
+    "vsix": "npm run package",
+    "push:gh": "node scripts/gh-push-via-api.mjs"
+  },
+  "dependencies": {
+    "@opencode-ai/sdk": "1.18.3",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zustand": "5.0.14"
+  },
+  "devDependencies": {
+    "@testing-library/react": "16.3.2",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/vscode": "^1.106.0",
+    "@vitejs/plugin-react": "6.0.3",
+    "@vscode/vsce": "3.9.2",
+    "esbuild": "0.28.1",
+    "jsdom": "29.1.1",
+    "typescript": "5.9.3",
+    "vite": "8.1.5",
+    "vitest": "4.1.10"
+  }
+}

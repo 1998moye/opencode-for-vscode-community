@@ -1,0 +1,17 @@
+.agents/**
+.codex/**
+.scratch/**
+.github/**
+docs/**
+!docs/images/**
+!docs/images/*.png
+scripts/**
+src/**
+test/**
+webview/**
+coverage/**
+node_modules/**
+*.ts
+tsconfig.json
+vite.config.ts
+vitest.config.ts
