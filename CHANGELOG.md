@@ -1,5 +1,9 @@
 # 更新记录
 
+## 0.0.141
+
+- 扩展详情 README 截图改为打包时内嵌 **data URI**（符合 VS Code `img-src https:` / data 策略，不依赖 GitHub 外链）。
+
 ## 0.0.140
 
 - 修复扩展详情 README 截图不显示：`vsce package` 增加 `--baseImagesUrl`（`raw.githubusercontent.com`），避免默认 `github.com/raw/HEAD` 裂图。

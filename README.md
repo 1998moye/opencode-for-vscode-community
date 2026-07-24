@@ -19,6 +19,8 @@
 
 ## 安装
 
+> **扩展 ID 须为 `Dingzhen.opencode-for-vscode-community`**。若发布者显示为 `dz` 等其它名称，是旧包，请先卸载再安装本仓库生成的 VSIX。
+
 ### 方式一：安装 VSIX（推荐尝鲜）
 
 1. 在 [Releases](https://github.com/1998moye/opencode-for-vscode-community/releases) 下载最新 `opencode-for-vscode-community-*.vsix`（或本地 `npm run package` 生成）。
