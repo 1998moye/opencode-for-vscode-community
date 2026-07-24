@@ -1,5 +1,9 @@
 # 更新记录
 
+## 0.0.144
+
+- README 截图改回相对路径 + `package.json` 的 `vsce.githubBranch`；商店须 `vsce publish` 才会更新详情图（见 `docs/发布到Marketplace.md`）。
+
 ## 0.0.143
 
 - README 截图改为 jsDelivr HTTPS；去掉 data URI 内嵌（扩展详情 webview 不兼容）。强调须安装 `Dingzhen.opencode-for-vscode-community`，勿与 `dz` 旧包混用。

@@ -9,4 +9,4 @@ alwaysApply: true
 1. 使用 `npm run package` 或 `npm run vsix`（二者等价）。
 2. 禁止跳过 `scripts/bump-version.mjs` 直接运行 `vsce package`。
 3. 功能性改动后，在 `CHANGELOG.md` 顶部补充新版本说明。
-4. README 功能截图在源码里写 **jsDelivr HTTPS**（`cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/...`）。扩展详情只认 https，不用相对路径、不用 data URI 内嵌。
+4. README 功能截图在源码里用**相对路径** `media/screenshots/...`，并配置 `package.json` 的 `repository` + `vsce.githubBranch`。`vsce package/publish` 会改写成 `github.com/.../raw/HEAD/...`（Marketplace 官方机制）。更新商店说明必须 `npm run publish:marketplace`，不能只推 GitHub。

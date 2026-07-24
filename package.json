@@ -2,7 +2,7 @@
   "name": "opencode-for-vscode-community",
   "displayName": "OpenCode for VS Code — 社区版",
   "description": "基于 OpenCode CLI 和 Server API 的原生 VS Code 图形客户端。",
-  "version": "0.0.143",
+  "version": "0.0.144",
   "publisher": "Dingzhen",
   "license": "MIT",
   "icon": "media/icon.png",
@@ -216,6 +216,9 @@
     "type": "git",
     "url": "https://github.com/1998moye/opencode-for-vscode-community.git"
   },
+  "vsce": {
+    "githubBranch": "main"
+  },
   "scripts": {
     "clean": "node scripts/clean.mjs",
     "build": "npm run clean && npm run build:extension && npm run build:webview",
@@ -228,7 +231,8 @@
     "test:watch": "vitest",
     "package": "node scripts/bump-version.mjs && npm run build && vsce package --no-dependencies",
     "vsix": "npm run package",
-    "push:gh": "node scripts/gh-push-via-api.mjs"
+    "push:gh": "node scripts/gh-push-via-api.mjs",
+    "publish:marketplace": "npm run package && vsce publish --no-dependencies"
   },
   "dependencies": {
     "@opencode-ai/sdk": "1.18.3",

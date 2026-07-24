@@ -26,6 +26,7 @@
 ### 方式一：安装 VSIX（推荐尝鲜）
 
 1. 在 [Releases](https://github.com/1998moye/opencode-for-vscode-community/releases) 下载最新 `opencode-for-vscode-community-*.vsix`（或本地 `npm run package` 生成）。
+2. **更新 Marketplace 商店页**（含详情图）须重新发布，见 [docs/发布到Marketplace.md](docs/发布到Marketplace.md)。
 2. VS Code：**扩展** → 右上角 `…` → **从 VSIX 安装…**
 
 ### 方式二：从源码构建
@@ -77,42 +78,42 @@ npm run build
 
 助手执行 read / write / bash 等工具时，会在聊天区展示步骤时间线，便于跟踪进度。
 
-![工具调用时间线](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/01-timeline.png)
+![工具调用时间线](media/screenshots/01-timeline.png)
 
 ### 斜杠技能与 /debug
 
 输入 `/` 可补全 OpenCode 技能；例如 `/debug`、诊断类技能用于结构化排查难复现问题与性能退化。
 
-![斜杠技能示例](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/02-slash-debug.png)
+![斜杠技能示例](media/screenshots/02-slash-debug.png)
 
 ### 权限与变更审查
 
 敏感工具调用会弹出**请求执行**；会话产生的文件增删改集中在**本会话文件变更**，可逐文件查看差异、保留或撤销，并支持批量操作。
 
-![变更审查](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/03-change-review.png)
+![变更审查](media/screenshots/03-change-review.png)
 
 ### 模型选择
 
 底栏打开模型面板，按供应商分组选择模型，并可跳转连接 Zen / Go 或第三方供应商。
 
-![选择模型](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/04-model-picker.png)
+![选择模型](media/screenshots/04-model-picker.png)
 
 ### 连接供应商
 
 通过列表选择供应商，按提示配置 **API Key** 或**环境变量**（凭据由 OpenCode 管理，勿写入本仓库）。
 
-![连接供应商](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/05-connect-provider.png)
+![连接供应商](media/screenshots/05-connect-provider.png)
 
 ### 智能体模式
 
 - **build**：完整工具权限，可改文件与执行命令。  
 - **plan**：只读分析，不修改代码、不执行命令。
 
-![智能体](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/06-agent-modes.png)
+![智能体](media/screenshots/06-agent-modes.png)
 
 ### 技能列表
 
-![斜杠命令列表](https://cdn.jsdelivr.net/gh/1998moye/opencode-for-vscode-community@main/media/screenshots/07-slash-commands.png)
+![斜杠命令列表](media/screenshots/07-slash-commands.png)
 
 ---
 
