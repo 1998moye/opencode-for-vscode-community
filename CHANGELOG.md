@@ -1,5 +1,13 @@
 # 更新记录
 
+## 0.0.140
+
+- 修复扩展详情 README 截图不显示：`vsce package` 增加 `--baseImagesUrl`（`raw.githubusercontent.com`），避免默认 `github.com/raw/HEAD` 裂图。
+
+## 0.0.139
+
+- README 截图放入 `media/screenshots/` 并打入 VSIX。
+
 ## 0.0.138
 
 - README 功能截图改为 GitHub `raw` 绝对链接；VSIX 打包包含 `docs/images`。

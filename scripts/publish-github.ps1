@@ -27,7 +27,10 @@ $status = git status --porcelain
 if ($status) {
   git commit -m "chore: release $version"
 }
-git push -u origin main
+npm run push:gh
+if ($LASTEXITCODE -ne 0) {
+  git push -u origin main
+}
 
 $notesFile = Join-Path $env:TEMP "opencode-release-notes-$version.txt"
 Set-Content -Path $notesFile -Encoding UTF8 -Value @(

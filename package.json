@@ -2,7 +2,7 @@
   "name": "opencode-for-vscode-community",
   "displayName": "OpenCode for VS Code — 社区版",
   "description": "基于 OpenCode CLI 和 Server API 的原生 VS Code 图形客户端。",
-  "version": "0.0.139",
+  "version": "0.0.140",
   "publisher": "Dingzhen",
   "license": "MIT",
   "icon": "media/icon.png",
@@ -226,7 +226,7 @@
     "typecheck": "tsc --noEmit && tsc -p webview/tsconfig.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "package": "node scripts/bump-version.mjs && npm run build && vsce package --no-dependencies",
+    "package": "node scripts/bump-version.mjs && npm run build && vsce package --no-dependencies --baseImagesUrl https://raw.githubusercontent.com/1998moye/opencode-for-vscode-community/main/",
     "vsix": "npm run package",
     "push:gh": "node scripts/gh-push-via-api.mjs"
   },
